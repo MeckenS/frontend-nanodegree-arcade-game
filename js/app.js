@@ -34,9 +34,10 @@ class Hero {
     this.step = 101;
     this.jump = 83;
     this.startX = this.step * 2;
-    this.startY = (this.jump * 5) - 20;
+    this.startY = (this.jump * 4) + 55;
     this.x = this.startX;
     this.y = this.startY;
+    this.winGame = false;
   }
   //Draw player on the gameboard
   render() {
@@ -66,6 +67,23 @@ class Hero {
       }
       break;
     }
+  }
+
+  update() {
+    //for player and bug collision
+    for(let enemy of allEnemies) {
+      if (this.y === enemy.y && (enemy.x + enemy.step/2 > this.x && enemy.x < this.x + this.step/2)) {
+        this.reset();
+      }
+    }
+    if (this.y === 55) {
+      this.winGame = true;
+    }
+  }
+  //reset the player
+  reset() {
+    this.y = this.startY;
+    this.x = this.startX;
   }
 
 }
