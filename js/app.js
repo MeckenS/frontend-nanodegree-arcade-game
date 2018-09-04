@@ -24,14 +24,47 @@ Enemy.prototype.render = function() {
 
 class Hero {
   constructor() {
-    this.x = 0;
-    this.y = 0;
     this.sprite = 'images/char-boy.png';
+    this.step = 101;
+    this.jump = 83;
+    this.startX = this.step * 2;
+    this.startY = (this.jump * 5) - 20;
+    this.x = this.startX;
+    this.y = this.startY;
+
+
+
   }
   //Draw player on the gameboard
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
+  //update play position
+  handleInput(input)  {
+    switch(input) {
+      case 'left':
+      if (this.x > 0) {
+        this.x -= this.step;
+      }
+      break;
+      case 'up':
+      if (this.y > 83) {
+        this.y -= this.jump;
+      }
+      break;
+      case 'right':
+      if (this.x < this.step * 4) {
+        this.x += this.step;
+      }
+      break;
+      case 'down':
+      if (this.y < this.jump * 4) {
+        this.y += this.jump;
+      }
+      break;
+    }
+  }
+
 }
 
 const player = new Hero();
