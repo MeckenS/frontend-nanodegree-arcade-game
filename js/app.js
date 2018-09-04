@@ -1,19 +1,25 @@
 // Enemies our player must avoid
-var Enemy = function() {
-    // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
-
-    // The image/sprite for our enemies, this uses
-    // a helper we've provided to easily load images
+var Enemy = function(x, y, speed) {
+    this.x = x;
+    this.y = y + 55; //55 puts bug in middle of block
+    this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
+    this.step = 101;
+    this.boundary = this.step * 5;
+    this.resetPos = -this.step;
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
-    // which will ensure the game runs at the same speed for
-    // all computers.
+  //set enemy in motion
+  if(this.x < this.boundary) {
+    //sets the speed of bugs
+    this.x += this.speed * dt;
+  }
+  else {
+    this.x = this.resetPos;
+  }
 };
 
 // Draw the enemy on the screen, required method for game
@@ -31,9 +37,6 @@ class Hero {
     this.startY = (this.jump * 5) - 20;
     this.x = this.startX;
     this.y = this.startY;
-
-
-
   }
   //Draw player on the gameboard
   render() {
@@ -68,6 +71,12 @@ class Hero {
 }
 
 const player = new Hero();
+const bugOne = new Enemy(-101, 0, 250);
+const bugTwo = new Enemy(-101, 83, 200);
+const bugThree = new Enemy(-101, 166, 300);
+const allEnemies = [];
+allEnemies.push(bugOne, bugTwo, bugThree);
+
 
 // Now write your own player class
 // This class requires an update(), render() and
