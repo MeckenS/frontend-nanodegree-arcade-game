@@ -52,7 +52,7 @@ class Hero {
       }
       break;
       case 'up':
-      if (this.y > 83) {
+      if (this.y > 0) {
         this.y -= this.jump;
       }
       break;
@@ -77,7 +77,7 @@ class Hero {
       }
     }
     //checks to see if player won game
-    if (this.y === 55) {
+    if (this.y === -28) {
       this.winGame = true;
     }
   }
