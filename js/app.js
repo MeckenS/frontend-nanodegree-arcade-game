@@ -43,7 +43,7 @@ class Hero {
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
-  //update play position
+  //update player position
   handleInput(input)  {
     switch(input) {
       case 'left':
@@ -76,6 +76,7 @@ class Hero {
         this.reset();
       }
     }
+    //checks to see if player won game
     if (this.y === 55) {
       this.winGame = true;
     }
