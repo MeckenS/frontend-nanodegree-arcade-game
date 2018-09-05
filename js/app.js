@@ -70,7 +70,7 @@ class Hero {
   }
 
   update() {
-    //for player and bug collision
+    //player and bug collision
     for(let enemy of allEnemies) {
       if (this.y === enemy.y && (enemy.x + enemy.step/2 > this.x && enemy.x < this.x + this.step/2)) {
         this.reset();
@@ -89,21 +89,13 @@ class Hero {
 
 }
 
+//Create player & Bugs
 const player = new Hero();
 const bugOne = new Enemy(-101, 0, 250);
 const bugTwo = new Enemy(-101, 83, 200);
 const bugThree = new Enemy(-101, 166, 300);
 const allEnemies = [];
 allEnemies.push(bugOne, bugTwo, bugThree);
-
-const bgModal = document.querySelector(".bg-modal");
-const closeModal = document.querySelector(".close");
-const playAgain = document.querySelector(".btn");
-
-//close Modal
-closeModal.addEventListener("click", function() {
-  bgModal.style.display = "none";
-});
 
 
 // This listens for key presses and sends the keys to your

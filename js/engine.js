@@ -29,6 +29,9 @@ var Engine = (function(global) {
     canvas.height = 606;
     doc.body.appendChild(canvas);
 
+    const bgModal = document.querySelector(".bg-modal");
+    const playAgain = document.querySelector(".btn");
+
     /* This function serves as the kickoff point for the game loop itself
      * and handles properly calling the update and render methods.
      */
@@ -66,7 +69,7 @@ var Engine = (function(global) {
           id = win.requestAnimationFrame(main);
         }
     }
-    //Play again/ Reset game 
+    //Play again/ Reset game
     playAgain.addEventListener("click", function() {
       bgModal.style.display = "none";
       player.reset();
