@@ -60,11 +60,19 @@ var Engine = (function(global) {
         //stops game if player makes it to the end
         if (player.winGame === true) {
           win.cancelAnimationFrame(id);
+          bgModal.style.display = 'flex';
         }
         else {
           id = win.requestAnimationFrame(main);
         }
     }
+    //Play again/ Reset game 
+    playAgain.addEventListener("click", function() {
+      bgModal.style.display = "none";
+      player.reset();
+      player.winGame = false;
+      win.requestAnimationFrame(main);
+    });
 
     /* This function does some initial setup that should only occur once,
      * particularly setting the lastTime variable that is required for the
